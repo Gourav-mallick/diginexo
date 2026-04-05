@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diginexo | Client Success Strategy 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #06b6d4;
+            --primary-glow: rgba(6, 182, 212, 0.15);
+            --secondary: #3b82f6;
+            --accent: #8b5cf6;
+            --dark-bg: #030712;
+            --dark-card: #111827;
+            --dark-border: #1f2937;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background: #111827;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm; /* Changed from min-height: 297mm to height: 297mm */
+            padding: 15mm 20mm; /* Reduced padding for more content space */
+            margin: 10mm auto;
+            background: var(--dark-bg);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden; /* Ensure content never pushes to a 1.5 page scale */
+            page-break-after: always;
+        }
+
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .no-print { display: none; }
+        }
+
+        /* --- ELEMENTS --- */
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* --- COVER PAGE --- */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 247mm;
+            background: radial-gradient(circle at 100% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+        }
+
+        .cover-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .floating-logo {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .logo-text {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline-pill {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--primary);
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 4rem;
+        }
+
+        .cover-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 1rem;
+        }
+
+        /* --- CONTENT STYLES --- */
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2.section-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--dark-border);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 1rem;
+        }
+
+        .feature-item h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- WHY US PILL --- */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pillar {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            border-radius: 1.25rem;
+            border: 1px solid #374151;
+        }
+
+        .pillar-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .pillar h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 0.25rem; color: #fff; }
+        .pillar p { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* --- TECH STACK --- */
+        .tech-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #1f2937;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 0.25rem;
+        }
+
+        /* --- PROCESS TIMELINE --- */
+        .timeline {
+            border-left: 2px solid #1f2937;
+            margin-left: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-2rem - 6px);
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-step {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        /* --- FOOTER --- */
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 25mm;
+            right: 25mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--dark-border);
+            padding-top: 1rem;
+        }
+
+        .btn-print {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+            z-index: 100;
+            transition: transform 0.2s;
+        }
+
+        .btn-print:hover { transform: translateY(-2px); }
+
+    </style>
+</head>
+<body>
+
+    <button class="btn-print no-print" onclick="window.print()">Export Strategy PDF</button>
+
+    <!-- PAGE 1: ULTIMATE COVER -->
+    <div class="page cover-page">
+        <div class="cover-content">
+            <div class="floating-logo">
+                <span class="logo-text">diginexo</span><span style="color: #6b7280; font-size: 3rem; font-weight: 800;">.in</span>
+            </div>
+            <span class="tagline-pill">Innovation · Agility · Excellence</span>
+            <h1 class="hero-title">Client Success<br><span style="color: var(--primary)">Strategy 2026</span></h1>
+            <p class="hero-subtitle">A roadmap for digital transformation and enterprise-grade software development.</p>
+        </div>
+        
+        <div class="cover-footer">
+            <div style="text-align: left;">
+                <p style="font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.5rem; font-weight: 800;">CONFIDENTIAL PROPOSAL</p>
+                <h3 style="font-size: 1.25rem;">Prepared for Valued Client</h3>
+            </div>
+            <div style="text-align: right;">
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Issue Date: April 2026</p>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Valid for: 30 Days</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: VISION -->
+    <div class="page">
+        <div class="header-spacer" style="height: 10mm;"></div>
+        <div class="section-header">
+            <span class="section-tag">01. Vision</span>
+            <h2 class="section-title">Who We Are</h2>
+        </div>
+        
+        <div class="glass-card">
+            <p style="font-size: 1.1rem; color: #fff; font-weight: 500; margin-bottom: 1.5rem;">Diginexo is a specialized software development house dedicated to turning complex problems into elegant digital solutions.</p>
+            <p>We empower startups and enterprises by providing world-class development talent from India, focusing on scalability, clean code, and user-centric design. We don't just build apps; we build the core engines of modern businesses.</p>
+        </div>
+
+        <div class="glass-card" style="margin-top: 2rem;">
+            <h3 style="color: #fff; margin-bottom: 1rem;">Our Mission</h3>
+            <p>To bridge the gap between visionary ideas and technical reality through expert engineering, transparent communication, and long-term partnership.</p>
+        </div>
+
+        <div class="page-footer">
+            <span>Diginexo | Corporate Vision</span>
+            <span>Page 02</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: WHY US -->
+    <div class="page">
+        <div class="header-spacer" style="height: 10mm;"></div>
+        <div class="section-header">
+            <span class="section-tag">02. Strategic Pillars</span>
+            <h2 class="section-title">Why Partner With Us?</h2>
+        </div>
+
+        <div class="pillar-grid">
+            <div class="pillar">
+                <span class="pillar-icon">⚡</span>
+                <h4>Agile Velocity</h4>
+                <p>Fast-track MVP development to hit market timing perfectly.</p>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">💎</span>
+                <h4>Elite Quality</h4>
+                <p>Clean architecture that scales easily as your user base grows.</p>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">🤝</span>
+                <h4>Lifer Partnership</h4>
+                <p>We stay with you from the first prototype to global scale.</p>
+            </div>
+        </div>
+
+        <div class="glass-card" style="margin-top: 3rem;">
+            <h3 style="color: #fff; margin-bottom: 1rem;">Core Expertise</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Frontend Mastery</h3>
+                    <p>Pixel-perfect React & Next.js applications with high performance.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Mobile Excellence</h3>
+                    <p>Native Android & iOS solutions built for thousands of concurrent users.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Partnership & Expertise</span>
+            <span>Page 03</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: SERVICES & TECH STACK -->
+    <div class="page">
+        <div class="section-header">
+            <span class="section-tag">03. Capabilities</span>
+            <h2 class="section-title">Our Services</h2>
+        </div>
+
+        <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="glass-card" style="padding: 1.5rem; margin-bottom: 0.5rem;">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Android App Dev</h3>
+                <p style="font-size: 0.85rem;">Native Kotlin & Jetpack Compose applications for businesses that need high-performance mobile tools.</p>
+            </div>
+            <div class="glass-card" style="padding: 1.5rem; margin-bottom: 0.5rem;">
+                <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Web Ecosystems</h3>
+                <p style="font-size: 0.85rem;">Full-stack development using React/Next.js, Node.js, and modern cloud infrastructures.</p>
+            </div>
+            <div class="glass-card" style="padding: 1.5rem; margin-bottom: 0.5rem;">
+                <h3 style="color: var(--accent); margin-bottom: 0.5rem;">UI/UX Systems</h3>
+                <p style="font-size: 0.85rem;">End-to-end design systems in Figma that prioritize accessibility and premium aesthetics.</p>
+            </div>
+            <div class="glass-card" style="padding: 1.5rem; margin-bottom: 0.5rem;">
+                <h3 style="color: #10b981; margin-bottom: 0.5rem;">Startup MVP</h3>
+                <p style="font-size: 0.85rem;">Helping founders build and launch their vision in as little as 4-8 weeks.</p>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 3rem;">
+            <span class="section-tag">04. Technology</span>
+            <h2 class="section-title">The Stack We Trust</h2>
+        </div>
+
+        <div class="glass-card">
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.9rem; color: #6b7280; text-transform: uppercase; margin-bottom: 0.75rem;">Frontend & Mobile</h4>
+                <div class="tech-tag">React</div><div class="tech-tag">Next.js</div><div class="tech-tag">Kotlin</div><div class="tech-tag">Jetpack Compose</div><div class="tech-tag">Tailwind CSS</div>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.9rem; color: #6b7280; text-transform: uppercase; margin-bottom: 0.75rem;">Backend & Cloud</h4>
+                <div class="tech-tag">Node.js</div><div class="tech-tag">TypeScript</div><div class="tech-tag">Firebase</div><div class="tech-tag">AWS</div><div class="tech-tag">MongoDB</div>
+            </div>
+            <div>
+                <h4 style="font-size: 0.9rem; color: #6b7280; text-transform: uppercase; margin-bottom: 0.75rem;">Design & Quality</h4>
+                <div class="tech-tag">Figma</div><div class="tech-tag">Material 3</div><div class="tech-tag">JUnit</div><div class="tech-tag">Espresso</div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Capabilities & Technology</span>
+            <span>Page 04</span>
+        </div>
+    </div>
+
+    <!-- PAGE 5: PORTFOLIO & IMPACT -->
+    <div class="page">
+        <div class="section-header">
+            <span class="section-tag">04. Proven Track Record</span>
+            <h2 class="section-title">Recent Success Cases</h2>
+        </div>
+
+        <div class="glass-card" style="border-left: 4px solid var(--primary);">
+            <div style="display: flex; justify-content: space-between; align-items: top; margin-bottom: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Smart NFC Attendance</h3>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 0.8rem;">Native Android Solution</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">80%</span>
+                    <p style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Process Efficiency</p>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Replaced manual paper tracking with a secure NFC-based check-in system for a large educational campus.</p>
+            <div style="display: flex; gap: 0.5rem;">
+                <span class="tech-tag">NFC API</span><span class="tech-tag">Room DB</span><span class="tech-tag">Compose</span>
+            </div>
+        </div>
+
+        <div class="glass-card" style="border-left: 4px solid var(--accent);">
+            <div style="display: flex; justify-content: space-between; align-items: top; margin-bottom: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.25rem; color: #fff;">AI Facial Recognition</h3>
+                    <p style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">Contactless Biometrics</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--accent);">< 2s</span>
+                    <p style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Match Speed</p>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">On-device AI system identifying users in milliseconds without internet connectivity.</p>
+            <div style="display: flex; gap: 0.5rem;">
+                <span class="tech-tag">TensorFlow Lite</span><span class="tech-tag">ML Kit</span><span class="tech-tag">CameraX</span>
+            </div>
+        </div>
+
+        <div class="glass-card" style="border-left: 4px solid var(--secondary);">
+            <div style="display: flex; justify-content: space-between; align-items: top; margin-bottom: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Config-Driven Analytics</h3>
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 0.8rem;">Enterprise Web Dashboard</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);">65%</span>
+                    <p style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Dev Time Saved</p>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Dynamic React dashboard platform that generates complex analytical views via JSON configuration.</p>
+            <div style="display: flex; gap: 0.5rem;">
+                <span class="tech-tag">React</span><span class="tech-tag">Recharts</span><span class="tech-tag">TypeScript</span>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Success Stories & Impact</span>
+            <span>Page 05</span>
+        </div>
+    </div>
+
+    <!-- PAGE 6: PROCESS TIMELINE -->
+    <div class="page">
+        <div class="section-header">
+            <span class="section-tag">05. Implementation</span>
+            <h2 class="section-title">The Agile Pipeline</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-step">Step 01</div>
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">Discovery & Architecture Plan</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">We map your requirements to a scalable technical architecture before writing a single line of code.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-step">Step 02</div>
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">Figma Prototyping</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Design of all high-fidelity screens and interactive flows for your immediate review and approval.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-step">Step 03</div>
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">V1 Core Sprint</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Focused 4-week sprint to build the core engine of your product, ready for initial testing.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-step">Step 04</div>
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">Iterative Polishing</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Continuous feedback loops where we add secondary features and polish the UI/UX to perfection.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-step">Step 05</div>
+                <h4 style="color: #fff; margin-bottom: 0.5rem;">QA & Global Launch</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Rigorous stress testing followed by deployment to Play Store, App Store, or Web Infrastructure.</p>
+            </div>
+        </div>
+
+        <div class="glass-card" style="margin-top: 2rem;">
+            <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Testimonial</h4>
+            <p style="font-style: italic; font-size: 0.9rem; color: #fff;">"Diginexo delivered an incredibly flexible config-driven dashboard... Top-notch TypeScript and React skills — a professional team that truly delivers."</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">— Michael Chen, Tech Lead, US Analytics Team</p>
+        </div>
+
+        <div class="page-footer">
+            <span>Our Agile Process</span>
+            <span>Page 06</span>
+        </div>
+    </div>
+
+    <!-- PAGE 7: CLOSING -->
+    <div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <div class="section-tag" style="margin-bottom: 1rem;">Let's Get Started</div>
+        <h2 style="font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 2rem;">Ready to build<br>the <span style="color: var(--primary)">Future?</span></h2>
+        
+        <div class="glass-card" style="width: 100%; max-width: 500px; text-align: left;">
+            <h3 style="color: #fff; margin-bottom: 1.5rem;">Next Steps</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">1. **Discovery Call**: Schedule a free 30-min deep dive.</p>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">2. **Quotation**: Receive a detailed line-item budget.</p>
+            <p style="font-size: 0.9rem;">3. **Kickoff**: Begin development within 72 hours.</p>
+        </div>
+
+        <div style="margin-top: 4rem; display: flex; gap: 4rem;">
+            <div style="text-align: left;">
+                <p style="font-size: 0.7rem; color: var(--primary); font-weight: 800;">EMAIL</p>
+                <p style="font-weight: 600;">officialdiginexo@gmail.com</p>
+            </div>
+            <div style="text-align: left;">
+                <p style="font-size: 0.7rem; color: var(--primary); font-weight: 800;">WHATSAPP</p>
+                <p style="font-weight: 600;">+91-6207331469</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 5rem;">
+            <div class="logo-text" style="font-size: 2rem;">diginexo<span style="color: #4b5563;">.in</span></div>
+        </div>
+    </div>
+
+</body>
+</html>
